@@ -1,0 +1,6 @@
+@OrganizadorSeries.Server_HostAddress = http://localhost:5101
+
+GET {{OrganizadorSeries.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

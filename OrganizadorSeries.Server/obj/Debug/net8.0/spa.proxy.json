@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:53735",
+"RedirectUrl": "",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\jdsala\\Desktop\\Teste Dev-Cap\\Projeto\\OrganizadorSeries\\Organizador-de-Series\\OrganizadorSeries.Server\\..\\organizadorseries.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
