@@ -11,8 +11,8 @@ using OrganizadorSeries.Server.Models;
 namespace OrganizadorSeries.Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250528195101_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20250529163516_AddImagemUrlToSerie")]
+    partial class AddImagemUrlToSerie
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,10 @@ namespace OrganizadorSeries.Server.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImagemUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observacoes")
                         .IsRequired()
@@ -76,7 +80,7 @@ namespace OrganizadorSeries.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("OrganizadorSeries.Server.Models.Serie", b =>

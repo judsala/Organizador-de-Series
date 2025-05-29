@@ -1,0 +1,78 @@
+<div><button type="button" class="bg-cyan-900 text-white font-semibold p-3 rounded shadow hover:bg-cyan-700 mb-4"
+    data-bs-toggle="modal" data-bs-target="#cadastrarModal">Cadastrar nova série</button></div>
+
+<!-- Campo de busca -->
+<div class="grid grid-cols-1 md:grid-cols-4 p-5 bg-white shadow">
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+
+    <input type="text" name="nomeFiltro" placeholder="Pesquisar série"
+      class="w-full border border-gray-300 rounded shadow-sm focus:ring outline-none p-2" />
+
+    <button class="bg-cyan-700 text-white rounded shadow p-2 hover:bg-cyan-800 transition duration-200">
+      Pesquisar
+    </button>
+  </div>
+</div>
+
+<!-- Galeria de séries -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 mt-6 ms-5">
+  <div *ngFor="let serie of series" class="bg-white shadow rounded p-4">
+    <img [src]="serie.imagemUrl" alt="Capa" class="w-fit h-fit object-cover rounded mb-2">
+    <h3 class="font-bold">{{ serie.titulo }}</h3>
+    <p>Temporadas: {{ serie.temporadas }}</p>
+    <p class="mb-3">{{ serie.observacoes }}</p>
+    <button (click)="editarSerie(serie)" class="bg-yellow-600 text-white rounded p-2 mr-2">Editar</button>
+    <button (click)="deletarSerie(serie.id)" class="bg-red-700 text-white rounded p-2">Deletar</button>
+  </div>
+</div>
+
+<!-- Modal cadastrar nova série-->
+<div class="modal fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cadastrarModalLabel">Cadastrar Nova Série</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="serieForm" (ngSubmit)="cadastrarSerie()">
+          <div>
+            <label for="nomeSerie" class="block text-gray-600 font-medium mb-1">Nome da Série:</label>
+            <input id="nomeSerie" formControlName="nomeSerie"
+              class="w-full p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring" required>
+            <div *ngIf="serieForm.get('nomeSerie')?.invalid && serieForm.get('nomeSerie')?.touched"
+              class="text-red-600 text-sm">Campo obrigatório</div>
+          </div>
+          <div>
+            <label for="temporadas" class="block text-gray-600 font-medium mb-1 mt-3">Temporadas:</label>
+            <input id="temporadas" formControlName="temporadas"
+              class="w-full p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring" required>
+            <div *ngIf="serieForm.get('temporadas')?.invalid && serieForm.get('temporadas')?.touched"
+              class="text-red-600 text-sm">Campo obrigatório</div>
+          </div>
+          <div>
+            <label for="imagemUrl" class="block text-gray-600 font-medium mb-1 mt-3">Foto(URL):</label>
+            <input id="imagemUrl" formControlName="imagemUrl"
+              class="w-full p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring" required>
+            <div *ngIf="serieForm.get('imagemUrl')?.invalid && serieForm.get('imagemUrl')?.touched"
+              class="text-red-600 text-sm">Campo obrigatório</div>
+          </div>
+          <div>
+            <label for="observacoes" class="block text-gray-600 font-medium mb-1 mt-3">Observações:</label>
+            <textarea id="observacoes" formControlName="observacoes"
+              class="w-full p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring"
+              required></textarea>
+            <div *ngIf="serieForm.get('observacoes')?.invalid && serieForm.get('observacoes')?.touched"
+              class="text-red-600 text-sm">Campo obrigatório</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="bg-red-800 text-white font-semibold p-3 rounded shadow hover:bg-red-700"
+              data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" [disabled]="serieForm.invalid"
+              class="bg-cyan-900 text-white font-semibold p-3 rounded shadow hover:bg-cyan-700">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
