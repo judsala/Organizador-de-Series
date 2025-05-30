@@ -4,13 +4,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.component.html',
   styleUrl: './cadastro-cliente.component.css',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule, NavbarComponent]
 })
 export class CadastroClienteComponent {
   cadastroForm: FormGroup;
@@ -36,7 +37,10 @@ export class CadastroClienteComponent {
         senha: this.cadastroForm.value.senha
       };
       this.cadastroClienteService.cadastrarCliente(user).subscribe({
-        next: () => this.router.navigate(['/login']),
+        next: () => {
+          alert('Cadastro realizado com sucesso! Faça login para continuar.');
+          this.router.navigate(['/login']);
+        },
         error: err => alert(err.error)
       });
     }

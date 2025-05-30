@@ -11,7 +11,6 @@ namespace OrganizadorSeries.Server.Models
         public string Temporadas { get; set; } = string.Empty;
         public string Observacoes { get; set; } = string.Empty;
 
-        [JsonIgnore]
         public User? User { get; set; }
     }
 }

@@ -9,12 +9,14 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    NavbarComponent,
     BrowserModule,
     AppRoutingModule,
     RouterModule,
