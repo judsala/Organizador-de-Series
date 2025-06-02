@@ -17,7 +17,7 @@ namespace OrganizadorSeries.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(User user)
         {
-            // Verifica se o email já existe
+            // Verifica se o email já existe no banco de dados
             if (_context.Users.Any(u => u.Email == user.Email))
                 return BadRequest("Email já cadastrado.");
 

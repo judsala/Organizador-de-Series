@@ -17,7 +17,7 @@ namespace OrganizadorSeries.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> PostSerie(Serie serie)
         {
-            // Verifica se a serie já existe
+            // Verifica se a serie já existe no banco de dados
             if (_context.Series.Any(s => s.Titulo.ToLower().Trim() == serie.Titulo && s.UserId == serie.UserId))
                 return BadRequest("Série já cadastrada.");
 

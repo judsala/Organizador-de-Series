@@ -22,3 +22,28 @@ The following steps were used to generate this project:
 - Update proxy endpoint to be the backend server endpoint.
 - Add project to the startup projects list.
 - Write this file.
+
+Este arquivo explica como o Visual Studio criou o projeto.
+
+As seguintes ferramentas foram usadas para gerar este projeto:
+- Angular CLI (ng)
+
+As seguintes etapas foram usadas para gerar este projeto:
+- Criar o projeto Angular com ng: `ng new organizadorseries.client --defaults --skip-install --skip-git --no-standalone`.
+- Adicionar `proxy.conf.js` para redirecionar chamadas para o backend ASP.NET.
+- Adicionar o script `aspnetcore-https.js` para instalar certificados https.
+- Atualizar o `package.json` para chamar `aspnetcore-https.js` e servir com https.
+- Atualizar o `angular.json` para apontar para `proxy.conf.js`.
+- Atualizar o componente `app.component.ts` para buscar e exibir informações de clima.
+- Modificar `app.component.spec.ts` com testes atualizados.
+- Atualizar `app.module.ts` para importar o HttpClientModule.
+- Criar o arquivo de projeto (`organizadorseries.client.esproj`).
+- Criar `launch.json` para habilitar o debug.
+- Atualizar o package.json para adicionar `jest-editor-support`.
+- Atualizar o package.json para adicionar `run-script-os`.
+- Adicionar `karma.conf.js` para testes unitários.
+- Atualizar o `angular.json` para apontar para `karma.conf.js`.
+- Adicionar o projeto à solução.
+- Atualizar o endpoint do proxy para ser o endpoint do backend.
+- Adicionar o projeto à lista de projetos de inicialização.
+- Escrever este arquivo.
